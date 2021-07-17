@@ -13,6 +13,7 @@
         <module>eureka-server</module>
         <module>eureka-server-ha</module>
         <module>eureka-provider</module>
+        <module>eureka-consumer</module>
     </modules>
     <artifactId>eureka</artifactId>
 
@@ -20,6 +21,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.fasterxml.jackson.jaxrs</groupId>-->
+<!--                    <artifactId>jackson-jaxrs-xml-provider</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
     </dependencies>
 
