@@ -16,10 +16,9 @@ import java.util.List;
 public class ProductService {
     
     @Autowired
-    private LoadBalancerClient loadBalancerClient;
+    private LoadBalancerClient loadBalancerClient;    
     
-    //http://192.168.78.151:8761/
-    private List<Product> listProduct(){
+    public List<Product> listProduct(){
         ServiceInstance serviceInstance = loadBalancerClient.choose("eureka.provider");
         StringBuffer sb = new StringBuffer();
         sb.append("http://");
@@ -27,6 +26,8 @@ public class ProductService {
         sb.append(":");
         sb.append(serviceInstance.getPort());
         sb.append("/product/list");
+        
+        System.out.println(sb.toString());
 
         RestTemplate restTemplate = new RestTemplate();
         ParameterizedTypeReference<List<Product>> typeReference 
