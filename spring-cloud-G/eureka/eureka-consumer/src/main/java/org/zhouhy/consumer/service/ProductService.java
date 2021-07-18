@@ -19,6 +19,7 @@ public class ProductService {
     private LoadBalancerClient loadBalancerClient;    
     
     public List<Product> listProduct(){
+        //它会到eureka server里面去找到所有的provider 然后算出哪一个provider 可用
         ServiceInstance serviceInstance = loadBalancerClient.choose("eureka.provider");
         StringBuffer sb = new StringBuffer();
         sb.append("http://");
