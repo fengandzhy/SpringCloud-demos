@@ -73,12 +73,17 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.iml
+
+*.dat
+
 # Windows shortcuts
 *.lnk
 ### Maven template
 target/
 .mvn/
+
 log/
+
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
