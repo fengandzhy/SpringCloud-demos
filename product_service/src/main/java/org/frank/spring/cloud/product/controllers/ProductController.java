@@ -1,6 +1,7 @@
 package org.frank.spring.cloud.product.controllers;
 
 import org.frank.spring.cloud.product.service.ProductService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +28,11 @@ public class ProductController {
     
     @GetMapping("find")
     public Product findProdById(@RequestParam("id") Integer id) {
-        Product p = productService.findProdById(id);
-        p.setName(p.getName()+" from port:" + port);
-        return p;
+        Product product = productService.findProdById(id);
+        Product result = new Product();
+        BeanUtils.copyProperties(product,result);
+        result.setName( result.getName() + " data from port="+port );
+        return result;
     }
 
     @Autowired
