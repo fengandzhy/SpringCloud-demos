@@ -17,6 +17,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order save(int userId, int productId) {
         Product product = restTemplate.getForObject("http://product-service/api/v1/product/find?id="+productId, Product.class);
+        
         System.out.println(product.getName());
         OrderItem item = new OrderItem();
         item.setProduct(product);
@@ -24,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
         
         Order order = new Order();
         order.getOrderItemList().add(item);
-        item.setOrder(order);
+        
         User user = new User();
         user.setId(userId);
         order.setUser(user);
