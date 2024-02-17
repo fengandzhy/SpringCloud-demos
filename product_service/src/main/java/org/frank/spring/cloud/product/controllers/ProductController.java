@@ -32,6 +32,7 @@ public class ProductController {
         Product result = new Product();
         BeanUtils.copyProperties(product,result);
         result.setName( result.getName() + " data from port="+port );
+        System.out.println(port);
         return result;
     }
 
