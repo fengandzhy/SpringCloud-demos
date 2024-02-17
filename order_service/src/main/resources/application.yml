@@ -12,3 +12,9 @@ eureka:
 spring:
   application:
     name: order_service
+    
+    
+#自定义负载均衡策略, 一般情况下不建议使用
+#product-service:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
