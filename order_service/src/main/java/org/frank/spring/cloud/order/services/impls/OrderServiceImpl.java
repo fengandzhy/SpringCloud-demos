@@ -17,6 +17,12 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order save(int userId, int productId) {
         Product product = restTemplate.getForObject("http://product-service/api/v1/product/find?id="+productId, Product.class);
+
+        //调用方式二
+//        ServiceInstance instance = loadBalancer.choose("product-service");
+//        String url = String.format("http://%s:%s/api/v1/product/find?id="+productId, instance.getHost(),instance.getPort());
+//        RestTemplate restTemplate = new RestTemplate();
+//        Map<String,Object> productMap = restTemplate.getForObject(url, Map.class);
         
         System.out.println(product.getName());
         OrderItem item = new OrderItem();
